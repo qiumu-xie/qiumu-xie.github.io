@@ -1,0 +1,523 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>未成型博客 | 未成型博客</title><meta name="author" content="qiumu"><meta name="copyright" content="qiumu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="未成型博客"><meta name="application-name" content="未成型博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="未成型博客"><meta property="og:url" content="http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/index.html"><meta property="og:site_name" content="未成型博客"><meta property="og:description" content="达梦主备搭建一、部署规划二、安装配置1.准备1.修改内核参数1vi &amp;#x2F;etc&amp;#x2F;sysctl.conf  12345678910111213141516fs.file-max &amp;#x3D; 6815744fs.aio-max-nr &amp;#x3D; 1048576kernel.shmmni &amp;#x3D; 4096kernel.sem"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="qiumu"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="达梦主备搭建一、部署规划二、安装配置1.准备1.修改内核参数1vi &amp;#x2F;etc&amp;#x2F;sysctl.conf  12345678910111213141516fs.file-max &amp;#x3D; 6815744fs.aio-max-nr &amp;#x3D; 1048576kernel.shmmni &amp;#x3D; 4096kernel.sem"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: qiumu","link":"链接: ","source":"来源: 未成型博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '未成型博客',
+  title: '未成型博客',
+  postAI: '',
+  pageFillDescription: '达梦主备搭建, 一、部署规划, 二、安装配置, 1.准备, 1.修改内核参数, 2.新建数据库管理用户和组, 3.修改用户资源限制, 2.安装, 1.挂载安装, 三、集群配置, 1.初始化实例, 2.脱机备份主库, 3.备份还原备库, 4.配置参数, 修改dm.ini参数, 配置归档配置文件 dmarch.ini, 配置MAL系统配置文件 dmmal.ini, 配置守护进程配置文件 dmwatcher.ini, 注册服务, 验证主备集群同步状态, 5.配置sql日志, 6.数据库参数优化, 7.定制备份策略, 8.客户端连接集群达梦主备搭建一部署规划二安装配置准备修改内核参数新建数据库管理用户和组修改用户资源限制安装挂载安装选择安装程序的语言为中文为英文提示是否安装文件路径选择时区即东区选择安装类型默认典型安装包含所有内容选择软件安装目录默认确认安装安装完成提示使用执行脚本三集群配置初始化实例主备字符集主库启动实例登录检查有效期及支持集群类型每一位上表示禁止表示授权使用第个字符表示数据守护第个字符表示第个字符表示读写分离第个字符表示如果表示只支持单机最大数跟对比其中的座的值不能比大关闭数据库脱机备份主库确保服务已启动若未启动主库备份备份还原备库拷贝备份文件备库还原配置参数修改参数主备相同配置归档配置文件主备配置系统配置文件主备相同配置守护进程配置文件主备相同方式启动数据库实例连接数据库主备库都修改主库修改数据库模式为备库修改数据库模式为启动守护进程注册服务注册守护进程服务主备库都执行注册数据库实例服务主备库都执行验证主备集群同步状态配置监视器启动监视器输入命令查看集群状态其中守护进程状态为实例状态为归档类型为归档状态为登录监视器进行切换测试数据同步验证登录主库登录备库配置日志所有节点修改到实例路径下如果对进行了修改可通过调用以下函数即时生效无需重启数据库数据库参数优化登录数据库执行以下脚本脚本会更新请获取最新脚本或粘贴脚本如果服务器上需要创建多个实例请调整每个实例占用物理内存的百分比再执行脚本注意执行完成需要重启数据库生效检查字符集大小写敏感页大小长度是否以字符为单位登录失败兼容模式是否兼容其他数据库模式不兼容兼容标准部分兼容部分兼容部分兼容兼容部分兼容定制备份策略根据应用需求定制备份策略如下所示备份类型备份周期备份时间全量备份每周每周六点增量备份每天除周六外每天点删除备份每天每天点使用用户创建备份目录登录主数据库创建作业系统表全量备份每周六点全备其中有分钟后的一次性全备调度执行完成后检查备份是否成功增量备份每周除周六外每天点增量备份备份定期删除每天删除天前备份添加自动收集统计信息的任务每周六点收集全库统计信息注意上线前必须提前小时完成数据迁移和统计信息收集检查作业删除作业如有数据迁移需要收集一下统计信息查看各表的记录客户端连接集群客户端主机上需要配置文件未安装数据库的机器新建即可文件路径位的安装在操作平台下此文件位于目录位的安装在操作平台下此文件位于目录位的安装在操作平台下此文件位于目录在平台下此文件位于目录文件内容以开头的行表示是注释全局配置区表示时区服务配置区只连主库客户端程序连接数据库时需要指定端口处替换为服务名即可例如的为注意当修改了内容后需要重启客户端程序修改的配置才能生效请把该文件路径授予权限也可以使用字符串直接连接具体操作实例或',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-27 16:08:12',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">未成型博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-04-03T08:52:24.655Z" title="发表于 2025-04-03 16:52:24">2025-04-03</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-03-27T08:08:12.705Z" title="更新于 2025-03-27 16:08:12">2025-03-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/"><header><h1 id="CrawlerTitle" itemprop="name headline">无题</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">qiumu</span><time itemprop="dateCreated datePublished" datetime="2025-04-03T08:52:24.655Z" title="发表于 2025-04-03 16:52:24">2025-04-03</time><time itemprop="dateCreated datePublished" datetime="2025-03-27T08:08:12.705Z" title="更新于 2025-03-27 16:08:12">2025-03-27</time></header><h1 id="达梦主备搭建"><a href="#达梦主备搭建" class="headerlink" title="达梦主备搭建"></a>达梦主备搭建</h1><h3 id="一、部署规划"><a href="#一、部署规划" class="headerlink" title="一、部署规划"></a>一、部署规划</h3><h3 id="二、安装配置"><a href="#二、安装配置" class="headerlink" title="二、安装配置"></a>二、安装配置</h3><h4 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h4><h6 id="1-修改内核参数"><a href="#1-修改内核参数" class="headerlink" title="1.修改内核参数"></a>1.修改内核参数</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fs.file-max = 6815744</span><br><span class="line">fs.aio-max-nr = 1048576</span><br><span class="line">kernel.shmmni = 4096</span><br><span class="line">kernel.sem = 250 32000 100 128</span><br><span class="line">net.ipv4.ip_local_port_range = 9000 65500</span><br><span class="line">net.core.rmem_default = 4194304</span><br><span class="line">net.core.rmem_max = 4194304</span><br><span class="line">net.core.wmem_default = 262144</span><br><span class="line">net.core.wmem_max = 1048576</span><br><span class="line">vm.dirty_ratio = 80</span><br><span class="line">vm.dirty_expire_centisecs = 500</span><br><span class="line">vm.dirty_writeback_centisecs = 100</span><br><span class="line">kernel.core_pattern =/data/core.%p</span><br><span class="line">vm.swappiness=10</span><br><span class="line">vm.dirty_background_ratio = 0</span><br><span class="line">vm.min_free_kbytes = 2097152</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-新建数据库管理用户和组"><a href="#2-新建数据库管理用户和组" class="headerlink" title="2.新建数据库管理用户和组"></a>2.新建数据库管理用户和组</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">groupadd dinstall -g 2001</span><br><span class="line"></span><br><span class="line">useradd  -G dinstall -m -d /home/dmdba -s /bin/bash -u 2001 dmdba</span><br><span class="line"></span><br><span class="line">passwd dmdba</span><br><span class="line">Hn@dameng123</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-修改用户资源限制"><a href="#3-修改用户资源限制" class="headerlink" title="3.修改用户资源限制"></a>3.修改用户资源限制</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dmdba  soft      nice       0</span><br><span class="line">dmdba  hard      nice       0</span><br><span class="line">dmdba  soft      as         unlimited</span><br><span class="line">dmdba  hard      as         unlimited</span><br><span class="line">dmdba  soft      fsize      unlimited</span><br><span class="line">dmdba  hard      fsize      unlimited</span><br><span class="line">dmdba  soft      nproc      65536</span><br><span class="line">dmdba  hard      nproc      65536</span><br><span class="line">dmdba  soft      nofile     65536</span><br><span class="line">dmdba  hard      nofile     65536</span><br><span class="line">dmdba  soft      core       unlimited</span><br><span class="line">dmdba  hard      core       unlimited</span><br><span class="line">dmdba  soft      data       unlimited</span><br><span class="line">dmdba  hard      data       unlimited</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">su - dmdba</span><br><span class="line">ulimit -n</span><br><span class="line">vi .bash_profile</span><br><span class="line"></span><br><span class="line">export DM_HOME=/home/dmdba/dmdbms</span><br><span class="line">export PATH=$PATH:$DM_HOME/bin</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DM_HOME/bin</span><br><span class="line"></span><br><span class="line">source .bash_profile </span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h4><h6 id="1-挂载安装"><a href="#1-挂载安装" class="headerlink" title="1.挂载安装"></a>1.挂载安装</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /dmsoft</span><br><span class="line">mount -o loop dm8_20230307_FTarm_kylin10_sp1_64.iso /dmsoft/</span><br><span class="line"></span><br><span class="line">su - dmdba</span><br><span class="line">cd /dmsoft</span><br><span class="line">./DMInstall.bin -i</span><br><span class="line">选择安装程序的语言 c 为中文，e 为英文。</span><br><span class="line">提示是否安装 key 文件，key路径/opt。</span><br><span class="line">选择时区，21 即东 8 区。</span><br><span class="line">选择安装类型，默认1典型安装（包含所有内容）。</span><br><span class="line">选择软件安装目录，默认/home/dmdba/dmdbms</span><br><span class="line">确认安装</span><br><span class="line">安装完成提示使用root执行脚本</span><br><span class="line">/home/dmdba/dmdbms/script/root/root_installer.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、集群配置"><a href="#三、集群配置" class="headerlink" title="三、集群配置"></a>三、集群配置</h3><h4 id="1-初始化实例"><a href="#1-初始化实例" class="headerlink" title="1.初始化实例"></a>1.初始化实例</h4><p>主</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dminit path=/data page_size=32 extent_size=32 charset=1 case_sensitive=0 log_size=2048 db_name=dmdb1 instance_name=rw1 PORT_NUM=5236</span><br></pre></td></tr></table></figure>
+
+<p>备</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dminit path=/data page_size=32 extent_size=32 charset=1 case_sensitive=0 log_size=2048 db_name=dmdb instance_name=rw2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符集charset： 0(GB18030) 1(UTF-8) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">主库启动实例</span><br><span class="line">dmserver /data/dmdb/dm.ini</span><br><span class="line"></span><br><span class="line">登录</span><br><span class="line">disql SYSDBA/&#x27;&quot;Hn@dameng123&quot;&#x27;</span><br><span class="line"></span><br><span class="line">检查license有效期及支持集群类型</span><br><span class="line">SELECT SERIES_NO,EXPIRED_DATE,AUTHORIZED_CUSTOMER,cluster_type, max_cpu_num FROM V$LICENSE;</span><br><span class="line">（CLUSTER_TYPE每一位上 0 表示禁止，1 表示授权使用.第 1 个字符：表示数据守护,第 2 个字符：表示 MPP，第 3 个字符：表示读写分离,第 4 个字符：表示 DSC,如果0000表示只支持单机）最大cpu数（max_cpu_num跟lscpu对比，其中的座（scoket）的值不能比max_cpu_num 大）</span><br><span class="line"></span><br><span class="line">关闭数据库</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-脱机备份主库"><a href="#2-脱机备份主库" class="headerlink" title="2.脱机备份主库"></a>2.脱机备份主库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">确保dmap 服务已启动</span><br><span class="line">ps -ef|grep dmap</span><br><span class="line">若未启动</span><br><span class="line">./DmAPService start</span><br></pre></td></tr></table></figure>
+
+<p>主库备份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dmrman use_ap=2</span><br><span class="line"></span><br><span class="line">BACKUP DATABASE &#x27;/data/dmdb/dm.ini&#x27; BACKUPSET &#x27;/home/dmdba/bakfull&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-备份还原备库"><a href="#3-备份还原备库" class="headerlink" title="3.备份还原备库"></a>3.备份还原备库</h4><p>拷贝备份文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r /home/dmdba/bakfull dmdba@172.16.10.22:/home/dmdba/bakfull</span><br></pre></td></tr></table></figure>
+
+<p>备库还原</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dmrman use_ap=2</span><br><span class="line"></span><br><span class="line">RESTORE DATABASE &#x27;/data/dmdb/dm.ini&#x27; FROM BACKUPSET &#x27;/home/dmdba/bakfull&#x27;;</span><br><span class="line"></span><br><span class="line">recover database &#x27;/data/dmdb/dm.ini&#x27; from backupset &#x27;/home/dmdba/bakfull&#x27;;</span><br><span class="line"></span><br><span class="line">RECOVER DATABASE &#x27;/dmdata/dmdb/dm.ini&#x27; UPDATE DB_MAGIC;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-配置参数"><a href="#4-配置参数" class="headerlink" title="4.配置参数"></a>4.配置参数</h4><h6 id="修改dm-ini参数"><a href="#修改dm-ini参数" class="headerlink" title="修改dm.ini参数"></a>修改dm.ini参数</h6><p>主备相同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /data/dmdb/dm.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MAL_INI = 1</span><br><span class="line">ARCH_INI = 1</span><br><span class="line">ALTER_MODE_STATUS = 0</span><br><span class="line">ENABLE_OFFLINE_TS = 2</span><br></pre></td></tr></table></figure>
+
+<h6 id="配置归档配置文件-dmarch-ini"><a href="#配置归档配置文件-dmarch-ini" class="headerlink" title="配置归档配置文件 dmarch.ini"></a>配置归档配置文件 dmarch.ini</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /data/dmdb/dmarch.ini</span><br></pre></td></tr></table></figure>
+
+<p>主</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ARCHIVE_REALTIME1]</span><br><span class="line">ARCH_TYPE        = REALTIME</span><br><span class="line">ARCH_DEST        = RW2</span><br><span class="line">[ARCHIVE_LOCAL1]</span><br><span class="line">ARCH_TYPE        = LOCAL</span><br><span class="line">ARCH_DEST        = /data/arch</span><br><span class="line">ARCH_FILE_SIZE   = 2048</span><br><span class="line">ARCH_SPACE_LIMIT = 10240</span><br></pre></td></tr></table></figure>
+
+<p>备</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ARCHIVE_REALTIME1]</span><br><span class="line">ARCH_TYPE        = REALTIME</span><br><span class="line">ARCH_DEST        = RW1</span><br><span class="line">[ARCHIVE_LOCAL1]</span><br><span class="line">ARCH_TYPE        = LOCAL</span><br><span class="line">ARCH_DEST        = /data/arch</span><br><span class="line">ARCH_FILE_SIZE   = 2048</span><br><span class="line">ARCH_SPACE_LIMIT = 10240</span><br></pre></td></tr></table></figure>
+
+<h6 id="配置MAL系统配置文件-dmmal-ini"><a href="#配置MAL系统配置文件-dmmal-ini" class="headerlink" title="配置MAL系统配置文件 dmmal.ini"></a>配置MAL系统配置文件 dmmal.ini</h6><p>主备相同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /data/dmdb/dmmal.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MAL_CHECK_INTERVAL       = 5</span><br><span class="line">MAL_CONN_FAIL_INTERVAL   = 15</span><br><span class="line">[MAL_INST1]</span><br><span class="line">MAL_INST_NAME    = RW1</span><br><span class="line">MAL_HOST              = 172.16.10.21</span><br><span class="line">MAL_PORT              = 7336</span><br><span class="line">MAL_INST_HOST    = 172.16.10.21</span><br><span class="line">MAL_INST_PORT    = 5236</span><br><span class="line">MAL_DW_PORT      = 7436</span><br><span class="line">MAL_INST_DW_PORT    = 7536</span><br><span class="line">[MAL_INST2]</span><br><span class="line">MAL_INST_NAME       = RW2</span><br><span class="line">MAL_HOST                 = 172.16.10.22</span><br><span class="line">MAL_PORT                 = 7336</span><br><span class="line">MAL_INST_HOST       = 172.16.10.22</span><br><span class="line">MAL_INST_PORT       = 5236</span><br><span class="line">MAL_DW_PORT         = 7436</span><br><span class="line">MAL_INST_DW_PORT    = 7536</span><br></pre></td></tr></table></figure>
+
+<h6 id="配置守护进程配置文件-dmwatcher-ini"><a href="#配置守护进程配置文件-dmwatcher-ini" class="headerlink" title="配置守护进程配置文件 dmwatcher.ini"></a>配置守护进程配置文件 dmwatcher.ini</h6><p>主备相同</p>
+<p>vi &#x2F;data&#x2F;dmdb&#x2F;dmwatcher.ini</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[GRP_RW] </span><br><span class="line">DW_TYPE    = GLOBAL</span><br><span class="line">DW_MODE    = MANUAL</span><br><span class="line">DW_ERROR_TIME     = 30</span><br><span class="line">INST_RECOVER_TIME  = 60</span><br><span class="line">INST_ERROR_TIME   = 20</span><br><span class="line">INST_OGUID         = 453331</span><br><span class="line">INST_INI           = /data/dmdb/dm.ini</span><br><span class="line">INST_AUTO_RESTART  = 1</span><br><span class="line">INST_STARTUP_CMD   = /home/dmdba/dmdbms/bin/DmServiceDM start</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mount方式启动数据库实例</span><br><span class="line">dmserver /data/dmdb/dm.ini mount</span><br><span class="line"></span><br><span class="line">连接数据库</span><br><span class="line">disql SYSDBA/&#x27;&quot;Hn@dameng123&quot;&#x27;</span><br><span class="line"></span><br><span class="line">主备库都修改 oguid</span><br><span class="line">sp_set_oguid(453331);</span><br><span class="line"></span><br><span class="line">主库修改数据库模式为 primary</span><br><span class="line">alter database primary;</span><br><span class="line"></span><br><span class="line">备库修改数据库模式为 standby</span><br><span class="line">alter database standby;</span><br><span class="line"></span><br><span class="line">启动守护进程</span><br><span class="line">dmwatcher /data/dmdb/dmwatcher.ini</span><br></pre></td></tr></table></figure>
+
+<h6 id="注册服务"><a href="#注册服务" class="headerlink" title="注册服务"></a>注册服务</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注册守护进程服务（主备库都执行）</span><br><span class="line">/home/dmdba/dmdbms/script/root/dm_service_installer.sh -t dmwatcher -p DM  -watcher_ini /data/dmdb/dmwatcher.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注册数据库实例服务（主备库都执行）</span><br><span class="line">/home/dmdba/dmdbms/script/root/dm_service_installer.sh -t dmserver -p DM  -dm_ini /data/dmdb/dm.ini</span><br></pre></td></tr></table></figure>
+
+<h6 id="验证主备集群同步状态"><a href="#验证主备集群同步状态" class="headerlink" title="验证主备集群同步状态"></a>验证主备集群同步状态</h6><p>配置监视器</p>
+<p>vi &#x2F;data&#x2F;dmdb&#x2F;dmmonitor.ini</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MON_DW_Confirm    = 0</span><br><span class="line">MON_LOG_PATH    = /home/dmdba/dmdbms/dmonilog</span><br><span class="line">MON_LOG_INTERVAL  = 60</span><br><span class="line">MON_LOG_FILE_SIZE   = 20</span><br><span class="line">MON_LOG_SPACE_LIMIT  = 1024</span><br><span class="line">[GRP_RW] </span><br><span class="line">MON_INST_OGUID    = 453331</span><br><span class="line">MON_DW_IP     = 172.16.10.21:7436</span><br><span class="line">MON_DW_IP     = 172.16.10.22:7436</span><br></pre></td></tr></table></figure>
+
+<p>启动监视器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmmonitor /data/dmdb/dmmonitor.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入 show 命令查看集群状态：</span><br><span class="line">其中守护进程状态 WSTATUS 为 OPEN，实例状态 ISTATUS 为 OPEN，归档类型 RTYPE 为TIMELY，归档状态 RSTAT 为VALID。</span><br></pre></td></tr></table></figure>
+
+<p>登录监视器进行切换测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">login</span><br><span class="line">switchover GRP_RW.RW2</span><br></pre></td></tr></table></figure>
+
+<p>数据同步验证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">登录主库</span><br><span class="line">disql SYSDBA/&#x27;&quot;Hn@dameng123&quot;&#x27;</span><br><span class="line"></span><br><span class="line">create table test(id int);</span><br><span class="line">insert into test values (1);</span><br><span class="line">commit;</span><br><span class="line"></span><br><span class="line">登录备库</span><br><span class="line">disql SYSDBA/&#x27;&quot;Hn@dameng123&quot;&#x27;</span><br><span class="line"></span><br><span class="line">select * from test;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-配置sql日志"><a href="#5-配置sql日志" class="headerlink" title="5.配置sql日志"></a>5.配置sql日志</h4><p>所有节点修改sqllog.ini到实例路径下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /data/dmdb/sqllog.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BUF_TOTAL_SIZE = 10240</span><br><span class="line">BUF_SIZE = 1024</span><br><span class="line">BUF_KEEP_CNT = 6</span><br><span class="line">[SLOG_ALL]</span><br><span class="line">FILE_PATH = ../log</span><br><span class="line">PART_STOR = 1</span><br><span class="line">SWITCH_MODE = 2</span><br><span class="line">SWITCH_LIMIT = 512</span><br><span class="line">ASYNC_FLUSH = 1</span><br><span class="line">FILE_NUM = 5</span><br><span class="line">ITEMS = 0</span><br><span class="line">SQL_TRACE_MASK = 2:3:25:28</span><br><span class="line">MIN_EXEC_TIME = 1500</span><br><span class="line">USER_MODE = 0</span><br><span class="line">USERS = </span><br></pre></td></tr></table></figure>
+
+<p>如果对 sqllog.ini 进行了修改，可通过调用以下函数即时生效，无需重启数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SP_SET_PARA_VALUE(1,&#x27;SVR_LOG&#x27;,1);</span><br><span class="line">SP_REFRESH_SVR_LOG_CONFIG();</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-数据库参数优化"><a href="#6-数据库参数优化" class="headerlink" title="6.数据库参数优化"></a>6.数据库参数优化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">登录数据库执行以下脚本，脚本会更新，请获取最新脚本</span><br><span class="line">start AutoParaAdj4.2_dm8.sql</span><br><span class="line">或</span><br><span class="line">edit</span><br><span class="line">粘贴脚本sql</span><br><span class="line">:wq</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">如果服务器上需要创建多个实例，请调整每个实例占用物理内存的百分比，再执行脚本。</span><br><span class="line">注意，执行完成需要重启数据库生效.</span><br><span class="line"></span><br><span class="line">检查字符集、大小写敏感、页大小，VARCHAR长度是否以字符为单位</span><br><span class="line">SELECT ID_CODE,PERMANENT_MAGIC,SF_GET_UNICODE_FLAG() AS CHARSET,SF_GET_CASE_SENSITIVE_FLAG() AS CASE_SENSITIVE,SF_GET_PAGE_SIZE() AS PAGE_SIZE ,SF_GET_LENGTH_IN_CHAR() as LENGTH_IN_CHAR;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl登录失败</span><br><span class="line">sp_set_para_value(2,&#x27;ENABLE_ENCRYPT&#x27;,0);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">兼容模式</span><br><span class="line">sp_set_para_value(2,&#x27;COMPATIBLE_MODE&#x27;,0);</span><br><span class="line"></span><br><span class="line">是否兼容其他数据库模式。0：不兼容，1：兼容 SQL92 标准，2：部分兼容 ORACLE，3：部分兼容 MS SQL SERVER，4：部分兼容 MYSQL，5：兼容 DM6，6：部分兼容 TERADATA</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-定制备份策略"><a href="#7-定制备份策略" class="headerlink" title="7.定制备份策略"></a>7.定制备份策略</h4><p>根据应用需求，定制备份策略如下所示</p>
+<table>
+<thead>
+<tr>
+<th>备份类型</th>
+<th>备份周期</th>
+<th>备份时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全量备份</td>
+<td>每周</td>
+<td>每周六 23 点</td>
+</tr>
+<tr>
+<td>增量备份</td>
+<td>每天</td>
+<td>除周六外每天 23 点</td>
+</tr>
+<tr>
+<td>删除备份</td>
+<td>每天</td>
+<td>每天 23 点 30</td>
+</tr>
+</tbody></table>
+<p>使用dmdba用户创建备份目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/dmbak</span><br></pre></td></tr></table></figure>
+
+<p>登录主数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disql SYSDBA/&#x27;&quot;Hn@dameng123&quot;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>创建作业系统表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SP_INIT_JOB_SYS(1);</span><br></pre></td></tr></table></figure>
+
+<p>全量备份（每周六 23 点全备）：其中有1分钟后的一次性全备调度，执行完成后检查备份是否成功。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">call SP_CREATE_JOB(&#x27;bakfull&#x27;,1,0,&#x27;&#x27;,0,0,&#x27;&#x27;,0,&#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_START(&#x27;bakfull&#x27;);</span><br><span class="line">call SP_ADD_JOB_STEP(&#x27;bakfull&#x27;, &#x27;bak01&#x27;, 6, &#x27;00000000/data/dmbak&#x27;, 0, 0, 0, 0, NULL, 0);</span><br><span class="line">call SP_ADD_JOB_SCHEDULE(&#x27;bakfull&#x27;, &#x27;std1&#x27;, 1, 2, 1, 64, 0, &#x27;23:00:00&#x27;, NULL, &#x27;2025-3-20 10:48:00&#x27;, NULL, &#x27;&#x27;);</span><br><span class="line">call SP_ADD_JOB_SCHEDULE(&#x27;bakfull&#x27;, &#x27;once1&#x27;, 1, 0, 0, 0, 0, NULL, NULL, sysdate+1/1440, NULL, &#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_COMMIT(&#x27;bakfull&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>增量备份（每周除周六外每天 23 点增量备份）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">call SP_CREATE_JOB(&#x27;bakincr&#x27;,1,0,&#x27;&#x27;,0,0,&#x27;&#x27;,0,&#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_START(&#x27;bakincr&#x27;);</span><br><span class="line">call SP_ADD_JOB_STEP(&#x27;bakincr&#x27;, &#x27;bak2&#x27;, 6, &#x27;40000000/data/dmbak|/data/dmbak&#x27;, 0, 0, 0, 0, NULL, 0);</span><br><span class="line">call SP_ADD_JOB_SCHEDULE(&#x27;bakincr&#x27;, &#x27;std2&#x27;, 1, 2, 1, 63, 0, &#x27;23:00:00&#x27;, NULL, &#x27;2025-3-20 10:48:00&#x27;, NULL, &#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_COMMIT(&#x27;bakincr&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>备份定期删除（每天 23：30 删除 14 天前备份）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">call SP_CREATE_JOB(&#x27;delbak&#x27;,1,0,&#x27;&#x27;,0,0,&#x27;&#x27;,0,&#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_START(&#x27;delbak&#x27;);</span><br><span class="line">call SP_ADD_JOB_STEP(&#x27;delbak&#x27;,&#x27;bak1&#x27;,0, &#x27;SF_BAKSET_BACKUP_DIR_ADD(&#x27;&#x27;DISK&#x27;&#x27;,&#x27;&#x27;/data/dmbak&#x27;&#x27;);</span><br><span class="line">call sp_db_bakset_remove_batch(&#x27;&#x27;DISK&#x27;&#x27;,now()-14);&#x27;, 1, 2, 0, 0, NULL, 0);</span><br><span class="line">call SP_ADD_JOB_SCHEDULE(&#x27;delbak&#x27;, &#x27;del01&#x27;, 1, 1, 1, 0, 0, &#x27;23:30:00&#x27;, NULL, &#x27;2025-3-20 10:48:00&#x27;, NULL, &#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_COMMIT(&#x27;delbak&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>添加自动收集统计信息的任务（每周六1点收集全库统计信息）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">call SP_CREATE_JOB(&#x27;statistics&#x27;,1,0,&#x27;&#x27;,0,0,&#x27;&#x27;,0,&#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_START(&#x27;statistics&#x27;);</span><br><span class="line"></span><br><span class="line">call SP_ADD_JOB_STEP(&#x27;statistics&#x27;, &#x27;statistics1&#x27;, 0, &#x27;begin</span><br><span class="line">for rs in (select &#x27;&#x27;sf_set_SESSION_para_value(&#x27;&#x27;&#x27;&#x27;HAGR_HASH_SIZE&#x27;&#x27;&#x27;&#x27;,(select cast(</span><br><span class="line">case when max(table_rowcount(owner,table_name))&lt;=(select max_value from v$dm_ini </span><br><span class="line">where para_Name=&#x27;&#x27;&#x27;&#x27;HAGR_HASH_SIZE&#x27;&#x27;&#x27;&#x27;) and max(table_rowcount(owner,table_name))&gt;=(</span><br><span class="line">select min_value from v$dm_ini where para_Name=&#x27;&#x27;&#x27;&#x27;HAGR_HASH_SIZE&#x27;&#x27;&#x27;&#x27;)  then </span><br><span class="line">max(table_rowcount(owner,table_name)) when max(table_rowcount(owner,table_name))&lt;(</span><br><span class="line">select min_value from v$dm_ini where para_Name=&#x27;&#x27;&#x27;&#x27;HAGR_HASH_SIZE&#x27;&#x27;&#x27;&#x27;) then</span><br><span class="line"> (select min_value from v$dm_ini where para_Name=&#x27;&#x27;&#x27;&#x27;HAGR_HASH_SIZE&#x27;&#x27;&#x27;&#x27;) else </span><br><span class="line"> (select max_value from v$dm_ini where para_Name=&#x27;&#x27;&#x27;&#x27;HAGR_HASH_SIZE&#x27;&#x27;&#x27;&#x27;) end as bigint) </span><br><span class="line"> from dba_tables where owner=&#x27;&#x27;&#x27;&#x27;&#x27;&#x27;||NAME||&#x27;&#x27;&#x27;&#x27;&#x27;&#x27;));&#x27;&#x27;</span><br><span class="line">sql1,&#x27;&#x27;DBMS_STATS.GATHER_SCHEMA_STATS(&#x27;&#x27;&#x27;&#x27;&#x27;&#x27;||NAME||&#x27;&#x27;&#x27;&#x27;&#x27;&#x27;,100,TRUE,&#x27;&#x27;&#x27;&#x27;FOR ALL COLUMNS SIZE AUTO&#x27;&#x27;&#x27;&#x27;);&#x27;&#x27; </span><br><span class="line">sql2</span><br><span class="line"> from SYS.SYSOBJECTS where TYPE$=&#x27;&#x27;SCH&#x27;&#x27; ) loop</span><br><span class="line">execute  immediate rs.sql1;</span><br><span class="line">execute  immediate rs.sql2;</span><br><span class="line">end loop;</span><br><span class="line">end;&#x27;, 0, 0, 0, 0, NULL, 0);</span><br><span class="line"></span><br><span class="line">call SP_ADD_JOB_SCHEDULE(&#x27;statistics&#x27;, &#x27;statistics1&#x27;, 1, 2, 1, 64, 0, &#x27;01:00:00&#x27;, NULL, &#x27;2025-3-20 10:48:00&#x27;, NULL, &#x27;&#x27;);</span><br><span class="line">call SP_JOB_CONFIG_COMMIT(&#x27;statistics&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>注意：上线前，必须提前48小时，完成数据迁移和统计信息收集。</p>
+<p>检查作业</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sysjob.sysjobs;</span><br></pre></td></tr></table></figure>
+
+<p>删除作业</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call SP_DROP_JOB(&#x27;bakfull&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>如有数据迁移，需要收集一下统计信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#x27;DBMS_STATS.GATHER_SCHEMA_STATS(&#x27;&#x27;&#x27;||username||&#x27;&#x27;&#x27;,100,TRUE,&#x27;&#x27;FOR ALL COLUMNS SIZE AUTO&#x27;&#x27;);&#x27;  from all_users;</span><br></pre></td></tr></table></figure>
+
+<p>查看各表的记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select t.table_name,t.num_rows from user_tables t;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-客户端连接集群"><a href="#8-客户端连接集群" class="headerlink" title="8.客户端连接集群"></a>8.客户端连接集群</h4><p>客户端主机上需要配置 dm_svc.conf 文件（未安装 DM 数据库的机器新建即可），文件路径：</p>
+<p>32 位的 DM 安装在 Win32 操作平台下，此文件位于 %SystemRoot%\system32 目录；</p>
+<p>64 位的 DM 安装在 Win64 操作平台下，此文件位于 %SystemRoot%\system32 目录；</p>
+<p>32 位的 DM 安装在 Win64 操作平台下，此文件位于 %SystemRoot%\SysWOW64 目录；</p>
+<p>在 Linux 平台下，此文件位于&#x2F;etc 目录。</p>
+<p>文件内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 以#开头的行表示是注释</span><br><span class="line"># 全局配置区</span><br><span class="line">DMRW=(172.16.10.21:5236, 172.16.10.22:5236)</span><br><span class="line">TIME_ZONE=(+480) #表示+8:00 时区</span><br><span class="line">LOGIN_ENCRYPT=(0)</span><br><span class="line">DIRECT=(Y)</span><br><span class="line"># 服务配置区</span><br><span class="line">[DMRW]</span><br><span class="line">LOGIN_MODE=(1) #只连主库</span><br></pre></td></tr></table></figure>
+
+<p>客户端程序连接数据库时，需要指定 IP 端口处替换为服务名即可，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">disql SYSDBA/&#x27;&quot;Hn@dameng123&quot;&#x27;@DMRW</span><br><span class="line">jdbc的url为：jdbc:dm://DMRW</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1)当修改了 dm_svc.conf 内容后，需要重启客户端程序，修改的配置才能生效。</p>
+<p>2)请把该文件路径授予666权限。</p>
+<p>也可以使用字符串直接连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url=&quot;jdbc:dm://dmconn?dmconn=(172.16.10.21:5236,172.16.10.22:5236)&amp;LOGIN_MODE=(1)&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>具体操作实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/dm_svc.conf</span><br><span class="line">或</span><br><span class="line">cat &gt;/etc/dm_svc.conf&lt;&lt;EOF</span><br><span class="line">DMRW=(172.16.10.21:5236, 172.16.10.22:5236)</span><br><span class="line">TIME_ZONE=(+480)</span><br><span class="line">LOGIN_ENCRYPT=(0)</span><br><span class="line">DIRECT=(Y)</span><br><span class="line">LANGUAGE=(CN)</span><br><span class="line">[DMRW]</span><br><span class="line">LOGIN_MODE=(1)</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">chmod 666 /etc/dm_svc.conf</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">qiumu</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/')">未成型博客</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=未成型博客&amp;url=http://example.com/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">未成型博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/12/14/hello-world/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">达梦主备搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、部署规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、安装配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">1.准备</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E4%BF%AE%E6%94%B9%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.2.1.0.1.</span> <span class="toc-text">1.修改内核参数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84"><span class="toc-number">1.0.2.1.0.2.</span> <span class="toc-text">2.新建数据库管理用户和组</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6"><span class="toc-number">1.0.2.1.0.3.</span> <span class="toc-text">3.修改用户资源限制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">2.安装</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E6%8C%82%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.2.2.0.1.</span> <span class="toc-text">1.挂载安装</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、集群配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">1.初始化实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%84%B1%E6%9C%BA%E5%A4%87%E4%BB%BD%E4%B8%BB%E5%BA%93"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">2.脱机备份主库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F%E5%A4%87%E5%BA%93"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">3.备份还原备库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.3.4.</span> <span class="toc-text">4.配置参数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9dm-ini%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.3.4.0.1.</span> <span class="toc-text">修改dm.ini参数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%BD%92%E6%A1%A3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-dmarch-ini"><span class="toc-number">1.0.3.4.0.2.</span> <span class="toc-text">配置归档配置文件 dmarch.ini</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEMAL%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-dmmal-ini"><span class="toc-number">1.0.3.4.0.3.</span> <span class="toc-text">配置MAL系统配置文件 dmmal.ini</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-dmwatcher-ini"><span class="toc-number">1.0.3.4.0.4.</span> <span class="toc-text">配置守护进程配置文件 dmwatcher.ini</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.0.3.4.0.5.</span> <span class="toc-text">注册服务</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%BB%E5%A4%87%E9%9B%86%E7%BE%A4%E5%90%8C%E6%AD%A5%E7%8A%B6%E6%80%81"><span class="toc-number">1.0.3.4.0.6.</span> <span class="toc-text">验证主备集群同步状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AEsql%E6%97%A5%E5%BF%97"><span class="toc-number">1.0.3.5.</span> <span class="toc-text">5.配置sql日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96"><span class="toc-number">1.0.3.6.</span> <span class="toc-text">6.数据库参数优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%AE%9A%E5%88%B6%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5"><span class="toc-number">1.0.3.7.</span> <span class="toc-text">7.定制备份策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E9%9B%86%E7%BE%A4"><span class="toc-number">1.0.3.8.</span> <span class="toc-text">8.客户端连接集群</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/03/%E8%BE%BE%E6%A2%A6%E4%B8%BB%E5%A4%87%E6%90%AD%E5%BB%BA/" title="无题">无题</a><time datetime="2025-04-03T08:52:24.655Z" title="发表于 2025-04-03 16:52:24">2025-04-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/14/hello-world/" title="Hello World">Hello World</a><time datetime="2024-12-14T09:09:30.441Z" title="发表于 2024-12-14 17:09:30">2024-12-14</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="qiumu" target="_blank">qiumu</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://qiumu-xie.github.io/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 qiumu 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
